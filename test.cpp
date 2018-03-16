@@ -12,7 +12,7 @@ bool Guess(int number) {
     }
     std::cout << "Smaller" << std::endl;
     return false;
-    else if (number < target) {
+    else if (number > target) {
         std::cout << "Bigger" << std::endl;
     }
     return false;
