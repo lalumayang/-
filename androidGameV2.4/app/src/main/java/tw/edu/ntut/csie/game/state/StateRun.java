@@ -37,8 +37,8 @@ public class StateRun extends GameState {
     @Override
     public void initialize(Map<String, Object> data) {
         _background = new MovingBitmap(R.drawable.bg);
-        _bx=0;
-        _by=0;
+        _bx= 0;
+        _by= 0;
         _background.setLocation(_bx,_by);
         _message = new MovingBitmap(R.drawable.message, 130, 150);
         _android = new MovingBitmap(R.drawable.android_green);
@@ -82,12 +82,12 @@ public class StateRun extends GameState {
         // �I�s���Ǭ��K�϶���
         _background.show();
 
-        _scores.show();
+       /* _scores.show();
         _flower.show();
         _message.show();
         _cloud.show();
         _door.show();
-        _android.show();
+        _android.show();*/
     }
 
     @Override
@@ -144,18 +144,17 @@ public class StateRun extends GameState {
     @Override
     public boolean pointerMoved(Pointer actionPointer, List<Pointer> pointers) {
         distance =(actionPointer.getY()-ay);
-            if(distance>0 && _by<-30) {
+            if(distance>0 && _by<-50) {
+                if(distance>60)distance=60;
                _by=_by+distance;
                 _background.setLocation(0, _by );
             }
-            if(distance<0 && _by>-175){
+            if(distance<0 && _by>-180){
+                if(distance<-40)distance=-40;
                 _by=_by+distance;
                 _background.setLocation(0, _by );
 
             }
-
-
-
         return true;
 
     }
