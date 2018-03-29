@@ -12,16 +12,22 @@ import tw.edu.ntut.csie.game.core.Audio;
 import tw.edu.ntut.csie.game.core.MovingBitmap;
 import tw.edu.ntut.csie.game.engine.GameEngine;
 import tw.edu.ntut.csie.game.extend.Animation;
+import tw.edu.ntut.csie.game.extend.BitmapButton;
+import tw.edu.ntut.csie.game.extend.ButtonEventHandler;
 import tw.edu.ntut.csie.game.extend.Integer;
 
 
-public class StateRun extends GameState {
+public class StateRun extends GameState  {
     public static final int DEFAULT_SCORE_DIGITS = 4;
     private MovingBitmap _background;
     private MovingBitmap _android;
     private MovingBitmap _cloud;
     private MovingBitmap _door;
     private MovingBitmap _message;
+    private BitmapButton _homeButton;
+    private BitmapButton _buyButton;
+    private BitmapButton _menuButton;
+    private BitmapButton _m1;
     private Animation _flower;
     private Integer _scores;
     private boolean _grab;
@@ -30,13 +36,15 @@ public class StateRun extends GameState {
     private  int ay;
     private int distance=0;
     private Audio _music;
+
     public StateRun(GameEngine engine) {
         super(engine);
     }
 
     @Override
     public void initialize(Map<String, Object> data) {
-        _background = new MovingBitmap(R.drawable.bg);
+        _m1=new BitmapButton(R.drawable.m1,20,20);
+        _background = new MovingBitmap(R.drawable.background);
         _bx=0;
         _by=0;
         _background.setLocation(_bx,_by);
@@ -69,7 +77,17 @@ public class StateRun extends GameState {
 
         _grab = false;
 
+        _menuButton=new BitmapButton(R.drawable.menubutton,5,5);
+        _buyButton=new BitmapButton(R.drawable.buybutton,512,5);
+        _homeButton=new BitmapButton(R.drawable.homebutton,577,5);
+
+
+
     }
+
+
+
+
 
     @Override
     public void move() {
@@ -82,12 +100,16 @@ public class StateRun extends GameState {
         // �I�s���Ǭ��K�϶���
         _background.show();
 
-        _scores.show();
+     /*   _scores.show();
         _flower.show();
         _message.show();
         _cloud.show();
         _door.show();
-        _android.show();
+        _android.show();*/
+        _buyButton.show();
+        _homeButton.show();
+        _menuButton.show();
+        _m1.show();
     }
 
     @Override
@@ -100,6 +122,10 @@ public class StateRun extends GameState {
         _cloud.release();
         _music.release();
         _door.release();
+        _buyButton.release();
+        _homeButton.release();
+        _menuButton.release();
+
 
         _background = null;
         _scores = null;
@@ -109,6 +135,9 @@ public class StateRun extends GameState {
         _cloud = null;
         _music = null;
         _door = null;
+        _buyButton=null;
+        _homeButton=null;
+        _menuButton=null;
     }
 
     @Override
@@ -144,11 +173,13 @@ public class StateRun extends GameState {
     @Override
     public boolean pointerMoved(Pointer actionPointer, List<Pointer> pointers) {
         distance =(actionPointer.getY()-ay);
-            if(distance>0 && _by<-30) {
+            if(distance>0 && _by<-50) {
+                if(distance>60)distance=60;
                _by=_by+distance;
                 _background.setLocation(0, _by );
             }
             if(distance<0 && _by>-175){
+                if(distance<-40)distance=-40;
                 _by=_by+distance;
                 _background.setLocation(0, _by );
 
