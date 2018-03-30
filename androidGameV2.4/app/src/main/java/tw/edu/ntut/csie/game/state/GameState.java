@@ -18,14 +18,14 @@ import tw.edu.ntut.csie.game.engine.GameEngine;
  */
 public abstract class GameState implements GameObject, KeyEventHandler, SensorEventHandler, PointerEventHandler {
 
-    protected GameEngine _engine;
+    public GameEngine _engine;
 
     /**
      * 建構一個<code>GameState</code>實體。
      *
      * @param engine 執行狀態處理者的引擎
      */
-    protected GameState(GameEngine engine) {
+    public GameState(GameEngine engine) {
         _engine = engine;
     }
 

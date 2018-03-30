@@ -8,6 +8,8 @@ import tw.edu.ntut.csie.game.Pointer;
 import tw.edu.ntut.csie.game.PointerEventHandler;
 import tw.edu.ntut.csie.game.core.MovingBitmap;
 
+
+
 /**
  * <code>BitmapButton</code>處理指標點的事件，管理未被按下時、被按下時
  * 及當指標停留在上方但未被按下時的狀態，並根據不同狀態顯示不同的圖片，並
@@ -56,6 +58,7 @@ public class BitmapButton implements GameObject, PointerEventHandler {
         loadBitmap(normalImage);
         _handlers = new ArrayList<ButtonEventHandler>();
     }
+
 
     /**
      * 用指定的圖片檔案路徑，建立一個<code>BitmapButton</code>實體。
@@ -160,6 +163,7 @@ public class BitmapButton implements GameObject, PointerEventHandler {
             _pressedImage = new MovingBitmap();
         }
         _pressedImage.loadBitmap(id);
+
     }
 
     /**

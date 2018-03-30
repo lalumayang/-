@@ -18,43 +18,31 @@ import tw.edu.ntut.csie.game.extend.BitmapButton;
 import tw.edu.ntut.csie.game.extend.ButtonEventHandler;
 import tw.edu.ntut.csie.game.extend.Integer;
 
-
-public class StateRun extends AbstractGameState  {
+public class StateShop extends AbstractGameState  {
     public static final int DEFAULT_SCORE_DIGITS = 4;
-    private MovingBitmap _background;
 
-    private BitmapButton _homeButton;
-    private BitmapButton _buyButton;
-    private BitmapButton _menuButton;
-    private int x,y;
+
+    private BitmapButton _m1;
+    private Animation _flower;
+    private Integer _scores;
     private boolean _grab;
     private int _bx,_by=0;
     private  int ay;
     private int distance=0;
     private Audio _music;
 
-    public StateRun(GameEngine engine) {
+    public StateShop(GameEngine engine) {
         super(engine);
     }
 
     @Override
     public void initialize(Map<String, Object> data) {
-        _background = new MovingBitmap(R.drawable.background);
-        _bx=0;
-        _by=0;
-        _background.setLocation(_bx,_by);
-        //_scores = new Integer(DEFAULT_SCORE_DIGITS, 50, 550, 10);
-        _music = new Audio(R.raw.ntut);
-        _music.setRepeating(true);
-        _music.play();
+        Log.e("test", "stateshop");
+
         _grab = false;
 
-        _menuButton=new BitmapButton(R.drawable.menubutton,5,3);
-        _buyButton=new BitmapButton(R.drawable.buybutton,525,3);
-        _homeButton=new BitmapButton(R.drawable.homebutton,580,3);
-
-
     }
+
 
 
     @Override
@@ -64,29 +52,13 @@ public class StateRun extends AbstractGameState  {
     @Override
     public void show() {
         // �I�s���Ǭ��K�϶���
-        _background.show();
-        _buyButton.show();
-        _homeButton.show();
-        _menuButton.show();
 
     }
 
     @Override
     public void release() {
-        _background.release();
-        _music.release();
-        _buyButton.release();
-        _homeButton.release();
-        _menuButton.release();
 
 
-        _background = null;
-
-        _music = null;
-
-        _buyButton=null;
-        _homeButton=null;
-        _menuButton=null;
     }
 
     @Override
@@ -111,13 +83,6 @@ public class StateRun extends AbstractGameState  {
 
     @Override
     public boolean pointerPressed(Pointer actionPointer, List<Pointer> pointers) {
-        ay=actionPointer.getY();
-        x=actionPointer.getX();
-        y=actionPointer.getY();
-        if((x>=527 &&x<=574) &&(y>=8&&y<=53)){
-            changeState(Game.SHOP_STATE);
-        }
-
 
         return true;
 
@@ -126,17 +91,6 @@ public class StateRun extends AbstractGameState  {
 
     @Override
     public boolean pointerMoved(Pointer actionPointer, List<Pointer> pointers) {
-        distance =(actionPointer.getY()-ay);
-            if(distance>0 && _by<-50) {
-                if(distance>60)distance=60;
-               _by=_by+distance;
-                _background.setLocation(0, _by );
-            }
-            if(distance<0 && _by>-175){
-                if(distance<-40)distance=-40;
-                _by=_by+distance;
-                _background.setLocation(0, _by );
-            }
 
 
 
@@ -153,7 +107,6 @@ public class StateRun extends AbstractGameState  {
     @Override
     public boolean pointerReleased(Pointer actionPointer, List<Pointer> pointers) {
         _grab = false;
-        distance=0;
 
         return true;
     }

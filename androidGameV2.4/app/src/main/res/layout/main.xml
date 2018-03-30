@@ -8,6 +8,52 @@
 		android:id="@+id/GameView"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content" />
+	<!--
+	<HorizontalScrollView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		>
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			>
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/eat10"
+				/>
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="#55000000"
+				android:src="@drawable/eat20"
+				/>
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/eat50"
+				/>
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="#55000000"
+				android:src="@drawable/eat80"
+				/>
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:src="@drawable/eat100h"
+				/>
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="#55000000"
+				android:src="@drawable/eat100c"
+				/>
 
+		</LinearLayout>
+	</HorizontalScrollView>
+	-->
 
 </FrameLayout>

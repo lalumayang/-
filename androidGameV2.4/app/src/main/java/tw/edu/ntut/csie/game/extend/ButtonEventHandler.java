@@ -16,4 +16,6 @@ public interface ButtonEventHandler {
      * @param button 被按下又放開的按鈕
      */
     public void perform(BitmapButton button);
+
+
 }

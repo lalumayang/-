@@ -27,7 +27,7 @@ public abstract class AbstractGameState extends GameState {
     private List<GameObject> _objects;
     private List<KeyEventHandler> _keyHandlers;
     private List<ReleasableResource> _resources;
-    private List<PointerEventHandler> _pointerHandlers;
+    public List<PointerEventHandler> _pointerHandlers;
 
     /**
      * 建構一個<code>AbstractGameState</code>實體。
@@ -132,7 +132,7 @@ public abstract class AbstractGameState extends GameState {
      *
      * @param object 可以在畫面上顯示和移動的物件
      */
-    protected void addGameObject(GameObject object) {
+    public void addGameObject(GameObject object) {
         if (!_objects.contains(object)) {
             _objects.add(object);
         }
@@ -171,7 +171,7 @@ public abstract class AbstractGameState extends GameState {
      *
      * @param handler 指定的處理者
      */
-    protected void addPointerEventHandler(PointerEventHandler handler) {
+    public void addPointerEventHandler(PointerEventHandler handler) {
         if (!_pointerHandlers.contains(handler)) {
             _pointerHandlers.add(handler);
         }
@@ -192,7 +192,7 @@ public abstract class AbstractGameState extends GameState {
      * @param pointers 指標點按下的位置
      * @return true表示該事件已經被處理完畢，不用再繼續傳遞下去。
      */
-    protected boolean notifyPointerPressedEvent(Pointer actionPointer, List<Pointer> pointers) {
+    public boolean notifyPointerPressedEvent(Pointer actionPointer, List<Pointer> pointers) {
         for (PointerEventHandler handler : _pointerHandlers) {
             if (handler.pointerPressed(actionPointer, pointers)) {
                 return true;
@@ -207,7 +207,7 @@ public abstract class AbstractGameState extends GameState {
      * @param pointers 指標點移動後的位置
      * @return true表示該事件已經被處理完畢，不用再繼續傳遞下去。
      */
-    protected boolean notifyPointerMovedEvent(Pointer actionPointer, List<Pointer> pointers) {
+    public boolean notifyPointerMovedEvent(Pointer actionPointer, List<Pointer> pointers) {
         for (PointerEventHandler handler : _pointerHandlers) {
             if (handler.pointerMoved(actionPointer, pointers)) {
                 return true;
@@ -222,7 +222,7 @@ public abstract class AbstractGameState extends GameState {
      * @param pointers 指標點放開的位置
      * @return true表示該事件已經被處理完畢，不用再繼續傳遞下去。
      */
-    protected boolean notifyPointerReleasedEvent(Pointer actionPointer, List<Pointer> pointers) {
+    public boolean notifyPointerReleasedEvent(Pointer actionPointer, List<Pointer> pointers) {
         for (PointerEventHandler handler : _pointerHandlers) {
             if (handler.pointerReleased(actionPointer, pointers)) {
                 return true;
